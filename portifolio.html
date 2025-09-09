@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edição de Vídeo | Seu Nome</title>
+  <style>
+    /* Paleta */
+    :root {
+      --bg: #0D1B2A;
+      --bg-alt: #1B263B;
+      --card: #162131;
+      --stroke: #415A77;
+      --text: #E0E1DD;
+      --sub: #A9B5C7;
+      --cta: #FFCA3A;
+      --cta-text: #1B263B;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      color: var(--text);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(13, 27, 42, 0.7);
+      border-bottom: 1px solid var(--stroke);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+    }
+
+    nav button, nav a {
+      margin-left: 10px;
+      padding: 8px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    nav button {
+      background: var(--card);
+      color: var(--text);
+    }
+    nav button:hover { opacity: 0.8; }
+    nav a {
+      background: var(--cta);
+      color: var(--cta-text);
+    }
+    nav a:hover { transform: translateY(-2px); }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 60px 20px;
+      gap: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero span {
+      color: var(--cta);
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons a, .buttons button {
+      display: inline-block;
+      margin: 6px;
+      padding: 12px 20px;
+      border-radius: 15px;
+      border: 1px solid var(--stroke);
+      background: var(--cta);
+      color: var(--cta-text);
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .buttons button {
+      background: transparent;
+      color: var(--text);
+    }
+    .buttons a:hover, .buttons button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Card com foto */
+    .card {
+      border: 1px solid var(--stroke);
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    .card img {
+      width: 100%;
+      display: block;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border-top: 1px solid var(--stroke);
+    }
+    .profile img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .profile p { margin: 0; }
+
+    /* Timeline fake */
+    .timeline {
+      margin-top: 20px;
+      background: var(--card);
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid var(--stroke);
+    }
+    .progress {
+      height: 8px;
+      background: var(--cta);
+      border-radius: 4px;
+      width: 20%;
+      animation: progressAnim 6s infinite;
+    }
+    @keyframes progressAnim {
+      0% { width: 20%; }
+      50% { width: 80%; }
+      100% { width: 30%; }
+    }
+
+    /* Portfólio modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+    .modal-content {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid var(--stroke);
+      animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+    .modal button {
+      margin-top: 20px;
+      background: var(--cta);
+      color: var(--cta-text);
+      border: none;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      border-top: 1px solid var(--stroke);
+      padding: 20px;
+      text-align: center;
+      color: var(--sub);
+    }
+
+    @media(max-width: 800px){
+      .hero { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div><strong>Mateus | Edição de Vídeo</strong></div>
+    <nav>
+      <button onclick="openPortfolio()">Portfólio</button>
+      <a href="https://wa.me/5587981087285?text=Olá! Quero um orçamento de edição de vídeo." target="_blank">WhatsApp</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Edição de vídeo que <span>vende mais</span> e conta sua história.</h1>
+      <p>Transformo gravações brutas em vídeos que prendem atenção e viram clientes — para redes sociais, anúncios e lançamentos.</p>
+      <div class="buttons">
+        <a href="https://wa.me/5587981087285?text=Olá! Quero um orçamento de edição de vídeo." target="_blank">Pedir orçamento</a>
+        <button onclick="openPortfolio()">Ver portfólio</button>
+      </div>
+      <div class="timeline">
+        <div class="progress"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <img src="1.jpg" alt="Sua foto estilo anúncio">
+        <div class="profile">
+          <img src="2.jpg" alt="Foto de perfil">
+          <div>
+            <p><strong>Mateus</strong></p>
+            <small>Editor(a) de Vídeo | Social Ads</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Seu Nome — Edição de Vídeo
+  </footer>
+
+  <!-- Modal Portfólio -->
+  <div class="modal" id="portfolioModal">
+    <div class="modal-content">
+      <h2>Em desenvolvimento</h2>
+      <p>Meu portfólio está sendo atualizado. Volte em breve para ver cases e resultados! ✨</p>
+      <button onclick="closePortfolio()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    function openPortfolio(){
+      document.getElementById('portfolioModal').style.display = 'flex';
+    }
+    function closePortfolio(){
+      document.getElementById('portfolioModal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
